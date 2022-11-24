@@ -1,0 +1,70 @@
+{
+  "01-01": {
+    "name": "Uudenvuodenpäivä",
+    "status": "Virallinen"
+  },
+  "01-06": {
+    "name": "Loppiainen",
+    "status": "Virallinen"
+  },
+  "04-02": {
+    "name": "Pitkäperjantai",
+    "status": "Virallinen"
+  },
+  "04-04": {
+    "name": "Pääsiäispäivä",
+    "status": "Virallinen"
+  },
+  "04-05": {
+    "name": "Toinen pääsiäispäivä",
+    "status": "Virallinen"
+  },
+  "04-30": {
+    "name": "Vappuaatto",
+    "status": "Epävirallinen"
+  },
+  "05-01": {
+    "name": "Vappupäivä",
+    "status": "Virallinen"
+  },
+  "05-13": {
+    "name": "Helatorstai",
+    "status": "Virallinen"
+  },
+  "05-23": {
+    "name": "Helluntai",
+    "status": "Virallinen"
+  },
+  "06-25": {
+    "name": "Juhannusaatto",
+    "status": "Epävirallinen"
+  },
+  "06-26": {
+    "name": "Juhannuspäivä",
+    "status": "Virallinen"
+  },
+  "11-06": {
+    "name": "Pyhäinpäivä",
+    "status": "Virallinen"
+  },
+  "12-06": {
+    "name": "Suomen Itsenäisyyspäivä",
+    "status": "Virallinen"
+  },
+  "12-24": {
+    "name": "Jouluaatto",
+    "status": "Epävirallinen"
+  },
+  "12-25": {
+    "name": "Joulupäivä",
+    "status": "Virallinen"
+  },
+  "12-26": {
+    "name": "Tapaninpäivä",
+    "status": "Virallinen"
+  },
+  "12-31": {
+    "name": "Uudenvuodenaatto",
+    "status": "Epävirallinen"
+  }
+}

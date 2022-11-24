@@ -1,0 +1,4 @@
+pushover==0.5
+python-dotenv==0.21.0
+python_dateutil==2.8.2
+requests==2.25.1

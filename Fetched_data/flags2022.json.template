@@ -1,0 +1,90 @@
+{
+  "01-23": {
+    "name": "Aluevaalit",
+    "status": "Virallinen liputuspäivä"
+  },
+  "02-05": {
+    "name": "J.L. Runebergin päivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "02-28": {
+    "name": "Kalevalan päivä, suomalaisen kulttuurin päivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "03-19": {
+    "name": "Minna Canthin päivä, tasa-arvon päivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "04-09": {
+    "name": "Mikael Agricolan päivä, suomen kielen päivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "04-27": {
+    "name": "Kansallinen veteraanipäivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "05-01": {
+    "name": "Vappu, suomalaisen työn päivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "05-08": {
+    "name": "Äitienpäivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "05-09": {
+    "name": "Eurooppa-päivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "05-12": {
+    "name": "J.V. Snellmanin päivä, suomalaisuuden päivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "05-15": {
+    "name": "Kaatuneitten muistopäivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "06-04": {
+    "name": "Puolustusvoimain lippujuhlan päivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "06-09": {
+    "name": "Ahvenanmaan itsehallinnon 100-vuotisjuhla | suositeltu liputus",
+    "status": "Virallinen liputuspäivä"
+  },
+  "06-25": {
+    "name": "Juhannus, Suomen lipun päivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "07-06": {
+    "name": "Eino Leinon päivä, runon ja suven päivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "10-10": {
+    "name": "Aleksis Kiven päivä, suomalaisen kirjallisuuden päivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "10-24": {
+    "name": "YK:n päivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "11-06": {
+    "name": "Ruotsalaisuuden päivä, Kustaa Aadolfin päivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "11-13": {
+    "name": "Isänpäivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "11-20": {
+    "name": "Lapsen oikeuksien päivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "12-06": {
+    "name": "Itsenäisyyspäivä",
+    "status": "Virallinen liputuspäivä"
+  },
+  "12-08": {
+    "name": "Jean Sibeliuksen päivä, suomalaisen musiikin päivä",
+    "status": "Virallinen liputuspäivä"
+  }
+}
