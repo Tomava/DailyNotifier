@@ -1,10 +1,12 @@
-from pushover import init, Client
+import requests
+from DailyNotifierConfig import PUSHOVER_USER_KEY
 
+URL = "https://api.pushover.net/1/messages.json"
 
-def send(init_key, title, message):
+def send(api_key, title, message):
+    json_data = {"token": api_key, "user": PUSHOVER_USER_KEY, "message": message, "title": title, "html": 1}
     try:
-        init(init_key)
-        Client().send_message(message, title=title, html=1)
+        request = requests.post(URL, json=json_data)
         return True
     except:
         return False
