@@ -1,0 +1,16 @@
+services:
+  reminder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - /home/debian/DailyReminder/Fetched_data:/home/scripter/Fetched_data
+      - /etc/localtime:/etc/localtime
+    logging:
+      driver: "json-file"
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: >
+      sh -c "python3 FetchNameDays.py &&
+             python3 FetchFlagDays.py &&
+             python3 FetchHolidays.py"
