@@ -18,8 +18,10 @@ def main():
                             str(respData))
     flag_days_html = re.findall('<li>(.*?)</li>', str(table_html))
     for flag_day in flag_days_html:
-        finnish_date = re.match('\d{1,2}\.\d{1,2}\.', flag_day)
+        finnish_date = re.match(r'\d{1,2}\.\d{1,2}\.', flag_day)
         # There can be an extra space before year
+        if finnish_date is None:
+            continue
         date = finnish_date.group().strip().split(".")
         day = int(date[0])
         month = int(date[1])
