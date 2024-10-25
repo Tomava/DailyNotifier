@@ -2,7 +2,7 @@ import datetime
 import json
 import SendPushOver
 from dateutil import relativedelta
-from DailyNotifierConfig import SPECIALS_MONTHLY_PATH, SPECIALS_YEARLY_PATH
+from DailyNotifierConfig import SPECIALS_MONTHLY_PATH, SPECIALS_YEARLY_PATH, GOTIFY_SPECIALS_TOKEN
 
 
 def get_year_month_day(date):
@@ -97,10 +97,9 @@ def get_monthly(date, monthly_message):
     return monthly_message
 
 
-def remind(PUSHOVER_SPECIALS_API_KEY):
+def remind():
     """
     Sends a daily reminder of special days
-    :param PUSHOVER_SPECIALS_API_KEY: str, Pushover api key
     :return: nothing
     """
     # Make empty messages
@@ -144,4 +143,4 @@ def remind(PUSHOVER_SPECIALS_API_KEY):
     Z (1 years, 3 months) [15 months] [455 days]
     '''
     if message != "":
-        SendPushOver.send(PUSHOVER_SPECIALS_API_KEY, str(finnish_date), message)
+        SendPushOver.send(GOTIFY_SPECIALS_TOKEN, str(finnish_date), message)
