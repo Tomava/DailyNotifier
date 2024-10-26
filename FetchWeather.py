@@ -1,8 +1,7 @@
 import urllib.request
 import json
 from datetime import datetime
-from dateutil import tz
-from DailyNotifierConfig import *
+from DailyNotifierConfig import LATITUDE, LONGITUDE, WEATHER_API
 
 FILE_NAME = "DailyWeather.json"
 ICONS = {
@@ -25,15 +24,13 @@ ICONS = {
     "13n": "❄",
     "50n": "🌫"
 }
-LATITUDE = 61.45
-LONGITUDE = 23.85
 
 def fetch_data():
     """
     Fetches the weather data and returns it as a dict
     :return: dict
     """
-    url = f"https://api.openweathermap.org/data/2.5/onecall?lat={LATITUDE}&lon={LONGITUDE}&exclude=current,minutely,alerts&appid={WEATHER_API}&units=metric"
+    url = f"https://api.openweathermap.org/data/2.5/forecast?lat={LATITUDE}&lon={LONGITUDE}&exclude=current,minutely,alerts&appid={WEATHER_API}&units=metric&cnt=8"
     try:
         with urllib.request.urlopen(url) as site:
             data = json.loads(site.read())
@@ -54,7 +51,7 @@ def get_weather_icons(data):
     """
     today = datetime.today()
     list_of_icons = []
-    for hour_data in data.get("hourly"):
+    for hour_data in data.get("list"):
         hour_time = datetime.fromtimestamp(hour_data.get("dt"))
         # Break on tomorrow
         if hour_time.date() != today.date():
@@ -66,7 +63,7 @@ def get_weather_icons(data):
             list_of_icons.append(icon)
     # Check that there is at least one icon
     if len(list_of_icons) < 1:
-        daily = data.get("daily")
+        daily = data.get("list")
         icon_id = daily[0].get("weather")[0].get("icon")
         icon = ICONS.get(icon_id)
         list_of_icons.append(icon)
@@ -78,8 +75,8 @@ def get_sun_times(data):
     Returns today's sunrise and sunset as strings
     :return: str, str
     """
-    sunrise_iso = datetime.fromtimestamp(data.get("daily")[0].get("sunrise"))
-    sunset_iso = datetime.fromtimestamp(data.get("daily")[0].get("sunset"))
+    sunrise_iso = datetime.fromtimestamp(data.get("city").get("sunrise"))
+    sunset_iso = datetime.fromtimestamp(data.get("city").get("sunset"))
 
     sunrise = datetime.time(sunrise_iso).strftime("%H:%M")
     sunset = datetime.time(sunset_iso).strftime("%H:%M")
@@ -95,6 +92,16 @@ def get_temperatures(data):
     Returns today's min and max temperatures as strings rounded to whole number
     :return: str, str: min, max
     """
-    min_temp = round(data.get("daily")[0].get("temp").get("min"))
-    max_temp = round(data.get("daily")[0].get("temp").get("max"))
+    today = datetime.today()
+    temperatures_min = []
+    temperatures_max = []
+    for hour_data in data.get("list"):
+        hour_time = datetime.fromtimestamp(hour_data.get("dt"))
+        # Break on tomorrow
+        if hour_time.date() != today.date():
+            break
+        temperatures_min.append(hour_data.get("main").get("temp_min"))
+        temperatures_max.append(hour_data.get("main").get("temp_max"))
+    min_temp = min(temperatures_min)
+    max_temp = max(temperatures_max)
     return str(min_temp) + "°C", str(max_temp) + "°C"

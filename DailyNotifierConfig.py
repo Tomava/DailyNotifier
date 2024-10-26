@@ -11,6 +11,8 @@ TELEGRAM_IDS = os.getenv("TELEGRAM_IDS")
 GOTIFY_URL = os.getenv("GOTIFY_URL")
 GOTIFY_DAILY_TOKEN = os.getenv("GOTIFY_DAILY_TOKEN")
 GOTIFY_SPECIALS_TOKEN = os.getenv("GOTIFY_SPECIALS_TOKEN")
+LATITUDE = os.getenv("LATITUDE")
+LONGITUDE = os.getenv("LONGITUDE")
 
 TELEGRAM_IDS_LIST = [x for x in os.getenv("TELEGRAM_IDS").split(" ")]
 
