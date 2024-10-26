@@ -1,18 +1,23 @@
 import requests
 from DailyNotifierConfig import GOTIFY_URL
 
-
 def send(token, title, message):
     json_data = {
         "message": message,
         "title": title,
         "priority": 5,
-        # "extras": {"client::display": {"contentType": "text/markdown"}},
+        "extras": {"client::display": {"contentType": "text/markdown"}},
     }
+    headers = {"Content-type": "application/json"}
     try:
         requests.post(
-            f"{GOTIFY_URL}/message", json=json_data, params={"token": token}, timeout=60
+            f"{GOTIFY_URL}/message",
+            json=json_data,
+            params={"token": token},
+            headers=headers,
+            timeout=60,
         )
         return True
-    except:
+    except requests.exceptions.RequestException as e:
+        print("Error:", e)
         return False
