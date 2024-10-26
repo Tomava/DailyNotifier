@@ -1,6 +1,6 @@
 import datetime
 import json
-import SendPushOver
+import SendGotify
 from dateutil import relativedelta
 from DailyNotifierConfig import SPECIALS_MONTHLY_PATH, SPECIALS_YEARLY_PATH, GOTIFY_SPECIALS_TOKEN
 
@@ -143,4 +143,4 @@ def remind():
     Z (1 years, 3 months) [15 months] [455 days]
     '''
     if message != "":
-        SendPushOver.send(GOTIFY_SPECIALS_TOKEN, str(finnish_date), message)
+        SendGotify.send(GOTIFY_SPECIALS_TOKEN, str(finnish_date), message)

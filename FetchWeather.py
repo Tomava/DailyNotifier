@@ -102,6 +102,6 @@ def get_temperatures(data):
             break
         temperatures_min.append(hour_data.get("main").get("temp_min"))
         temperatures_max.append(hour_data.get("main").get("temp_max"))
-    min_temp = min(temperatures_min)
-    max_temp = max(temperatures_max)
+    min_temp = round(min(temperatures_min))
+    max_temp = round(max(temperatures_max))
     return str(min_temp) + "°C", str(max_temp) + "°C"

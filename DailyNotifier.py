@@ -1,7 +1,7 @@
 import datetime
 import json
 import time
-import SendPushOver
+import SendGotify
 from DailyNotifierConfig import FOLDER_PATH, NAME_DAYS_PATH, GOTIFY_DAILY_TOKEN, TELEGRAM_IDS_LIST
 import FetchWeather
 import TelegramSender
@@ -147,7 +147,7 @@ def main():
     message, telegram_message = craft_messages(flag, holiday, custom_holiday, name_day, weather_and_times, debug_info)
     print(message)
 
-    SendPushOver.send(GOTIFY_DAILY_TOKEN, TITLE, message)
+    SendGotify.send(GOTIFY_DAILY_TOKEN, TITLE, message)
     for telegram_id in TELEGRAM_IDS_LIST:
         TelegramSender.send(telegram_message, telegram_id)
     SpecialsReminder.remind()
