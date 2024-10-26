@@ -129,11 +129,11 @@ def craft_messages(flag, holiday, custom_holiday, name_day, weather_and_times, d
     :return: str, str
     """
     flag_and_holiday = f"{flag}\n{holiday}\n{custom_holiday}".strip()
-    message = f"{weather_and_times}\n**{', '.join(name_day)}**\n\n{flag_and_holiday}".strip().replace("\n", "  \n")
+    message = f"{weather_and_times}\n**{', '.join(name_day)}**\n\n{flag_and_holiday}".strip()
     telegram_message = f"{TITLE}\n{weather_and_times}\n***{', '.join(name_day)}***\n\n{flag_and_holiday}".strip()
     if debug_info != "":
         message += f"\n({debug_info})"
-    return message, telegram_message
+    return message.replace("\n", "  \n"), telegram_message
 
 
 def main():
