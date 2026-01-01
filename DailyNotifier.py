@@ -2,7 +2,12 @@ import datetime
 import json
 import time
 import SendGotify
-from DailyNotifierConfig import FOLDER_PATH, NAME_DAYS_PATH, GOTIFY_DAILY_TOKEN, TELEGRAM_IDS_LIST
+from DailyNotifierConfig import (
+    FOLDER_PATH,
+    NAME_DAYS_PATH,
+    GOTIFY_DAILY_TOKEN,
+    TELEGRAM_IDS_LIST,
+)
 import FetchWeather
 import TelegramSender
 import SpecialsReminder
@@ -25,7 +30,7 @@ def get_flag_day():
         with open(f"{FOLDER_PATH}flags{YEAR}.json", "r", encoding="utf-8") as file:
             flags = json.load(file)
     except IOError:
-        flags = {MONTH_DATE: {'name': "Couldn't fetch flag day"}}
+        flags = {MONTH_DATE: {"name": "Couldn't fetch flag day"}}
     flag = flags.get(MONTH_DATE)
     if flag is not None:
         flag_name = f"🇫🇮{flag.get('name')}"
@@ -43,7 +48,7 @@ def get_holiday():
         with open(f"{FOLDER_PATH}holidays{YEAR}.json", "r", encoding="utf-8") as file:
             holidays = json.load(file)
     except IOError:
-        holidays = {MONTH_DATE: {'name': "Couldn't fetch holiday", 'status': "Error"}}
+        holidays = {MONTH_DATE: {"name": "Couldn't fetch holiday", "status": "Error"}}
     holiday = holidays.get(MONTH_DATE)
     if holiday is not None:
         holiday_name = f"🎉{holiday.get('name')} ({holiday.get('status')})"
@@ -61,7 +66,9 @@ def get_custom_holiday():
         with open(f"{FOLDER_PATH}custom_holidays.json", "r", encoding="utf-8") as file:
             holidays = json.load(file)
     except IOError:
-        holidays = {MONTH_DATE: {'name': "Couldn't fetch custom holiday", 'status': "Error"}}
+        holidays = {
+            MONTH_DATE: {"name": "Couldn't fetch custom holiday", "status": "Error"}
+        }
     holiday = holidays.get(MONTH_DATE)
     if holiday is not None:
         holiday_name = f"🎉{holiday.get('name')} ({holiday.get('status')})"
@@ -110,14 +117,18 @@ def get_weather_and_times():
         # Only leave sunrise and sunset to sun times
         sun_times = all_sun_times[:-1]
         temperatures = FetchWeather.get_temperatures(fetched_weather_data)
-        weather_and_times = f'{"".join(weather)} ({" ... ".join(temperatures)})\n↑{" - ".join(sun_times)}↓ ' \
-                            f'({total_sun_time})'
+        weather_and_times = (
+            f'{"".join(weather)} ({" ... ".join(temperatures)})\n↑{" - ".join(sun_times)}↓ '
+            f"({total_sun_time})"
+        )
     else:
         weather_and_times = ""
     return weather_and_times
 
 
-def craft_messages(flag, holiday, custom_holiday, name_day, weather_and_times, debug_info=""):
+def craft_messages(
+    flag, holiday, custom_holiday, name_day, weather_and_times, debug_info=""
+):
     """
     Crafts messages from given information
     :param flag: str, Today's flag day
@@ -129,7 +140,9 @@ def craft_messages(flag, holiday, custom_holiday, name_day, weather_and_times, d
     :return: str, str
     """
     flag_and_holiday = f"{flag}\n{holiday}\n{custom_holiday}".strip()
-    message = f"{weather_and_times}\n**{', '.join(name_day)}**\n\n{flag_and_holiday}".strip()
+    message = (
+        f"{weather_and_times}\n**{', '.join(name_day)}**\n\n{flag_and_holiday}".strip()
+    )
     telegram_message = f"{TITLE}\n{weather_and_times}\n***{', '.join(name_day)}***\n\n{flag_and_holiday}".strip()
     if debug_info != "":
         message += f"\n({debug_info})"
@@ -144,7 +157,9 @@ def main():
     holiday = get_holiday()
     custom_holiday = get_custom_holiday()
     debug_info = f"{round((time.time() - start_time) * 1000, 2)} ms"
-    message, telegram_message = craft_messages(flag, holiday, custom_holiday, name_day, weather_and_times, debug_info)
+    message, telegram_message = craft_messages(
+        flag, holiday, custom_holiday, name_day, weather_and_times, debug_info
+    )
     print(message)
 
     SendGotify.send(GOTIFY_DAILY_TOKEN, TITLE, message)

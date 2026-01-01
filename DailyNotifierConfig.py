@@ -20,3 +20,5 @@ FOLDER_PATH = f"Fetched_data{os.sep}"
 NAME_DAYS_PATH = f"{FOLDER_PATH}namedays.json"
 SPECIALS_MONTHLY_PATH = f"{FOLDER_PATH}specials_monthly.json"
 SPECIALS_YEARLY_PATH = f"{FOLDER_PATH}specials_yearly.json"
+if not os.path.exists(FOLDER_PATH):
+    os.makedirs(FOLDER_PATH)

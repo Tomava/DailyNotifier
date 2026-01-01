@@ -1,4 +1,4 @@
-FROM python:3.11-buster
+FROM python:3.14
 
 RUN useradd -u 1000 scripter
 RUN mkdir /home/scripter
@@ -11,4 +11,4 @@ COPY *.py ./
 COPY requirements.txt ./
 COPY .env ./
 
-RUN pip3.11 install -r requirements.txt
+RUN pip3.14 install -r requirements.txt
